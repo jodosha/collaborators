@@ -24,6 +24,7 @@ group :test do
   gem 'capybara'
   gem 'ffaker'
   gem 'fabrication', '~> 2.16'
+  gem 'database_cleaner'
 end
 
 group :production do

@@ -12,6 +12,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     concurrent-ruby (1.0.2)
+    database_cleaner (1.5.3)
     diff-lcs (1.2.5)
     dotenv (2.1.1)
     dry-configurable (0.3.0)
@@ -184,6 +185,7 @@ DEPENDENCIES
   bundler
   byebug
   capybara
+  database_cleaner
   dotenv (~> 2.0)
   fabrication (~> 2.16)
   ffaker
