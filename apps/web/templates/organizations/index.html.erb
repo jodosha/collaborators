@@ -3,11 +3,11 @@
 <div id="organizations">
   <% if organizations.any? %>
     <% organizations.each do |org| %>
-      <p><%= org.nickname %></p>
+      <p><%= org.nickname %> <%= org.active %></p>
     <% end %>
   <% else %>
     No organizations found
   <% end %>
 </div>
 
-<%= link_to("Sync with GitHub", "") %>
+<%= link_to("Sync with GitHub", routes.sync_organizations_path) %>
