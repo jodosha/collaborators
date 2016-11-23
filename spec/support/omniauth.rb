@@ -1,24 +1,36 @@
 module RSpec
   module Support
     module OmniAuth
+      def self.successful_params
+        attributes = Fabricate.attributes_for(:user)
+
+        Hash[
+          "omniauth.auth" => {
+            "provider" => PROVIDER.to_s,
+            "uid"      => attributes.fetch(:uid),
+            "info"     => {
+              "email"    =>  attributes.fetch(:email),
+              "image"    =>  attributes.fetch(:avatar_url),
+              "name"     => attributes.fetch(:name),
+              "nickname" => attributes.fetch(:nickname)
+            },
+            "credentials" => {
+              "token" => attributes.fetch(:token)
+            }
+          }
+        ]
+      end
+
       private
 
       PROVIDER = :github
 
       def omniauth_successful_signup
-        ::OmniAuth::AuthHash.new(
-          provider: PROVIDER.to_s,
-          uid: "123545",
-          info: {
-            email: "user@example.test",
-            image: "https://github.com/avatars/1.jpg",
-            name: "Luca",
-            nickname: "jodosha"
-          },
-          credentials: {
-            token: "abc123"
-          }
-        ).tap { |params| omniauth_mock_auth(params) }
+        params = OmniAuth.successful_params
+
+        ::OmniAuth::AuthHash.new(params.fetch("omniauth.auth")).tap do |data|
+          omniauth_mock_auth data
+        end
       end
 
       def omniauth_failing_signup

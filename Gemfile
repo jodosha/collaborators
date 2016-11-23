@@ -22,6 +22,8 @@ end
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem 'ffaker'
+  gem 'fabrication', '~> 2.16'
 end
 
 group :production do
