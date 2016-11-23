@@ -11,6 +11,8 @@ gem 'pg'
 gem 'omniauth-github'
 gem 'warden'
 
+gem 'octokit'
+
 group :development do
   gem 'shotgun'
   gem 'byebug'

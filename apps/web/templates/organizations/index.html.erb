@@ -1,1 +1,13 @@
 <h1>Organizations</h1>
+
+<div id="organizations">
+  <% if organizations.any? %>
+    <% organizations.each do |org| %>
+      <p><%= org.nickname %></p>
+    <% end %>
+  <% else %>
+    No organizations found
+  <% end %>
+</div>
+
+<%= link_to("Sync with GitHub", "") %>
