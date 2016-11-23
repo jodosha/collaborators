@@ -9,6 +9,7 @@ gem 'hanami-model', '~> 0.7'
 gem 'pg'
 
 gem 'omniauth-github'
+gem 'warden'
 
 group :development do
   gem 'shotgun'

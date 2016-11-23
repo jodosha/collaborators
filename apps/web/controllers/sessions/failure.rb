@@ -1,10 +1,16 @@
-module Web::Controllers::Sessions
-  class Failure
-    include Web::Action
-    expose :message
+module Web
+  module Controllers
+    module Sessions
+      class Failure
+        include Web::Action
+        include Authentication::Skip
 
-    def call(params)
-      @message = params[:message]
+        expose :message
+
+        def call(params)
+          @message = params[:message]
+        end
+      end
     end
   end
 end

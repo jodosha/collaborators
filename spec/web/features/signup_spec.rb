@@ -7,9 +7,9 @@ RSpec.feature "Signup" do
     visit "/"
     click_link "Signup"
 
-    expect(current_path).to eq("/auth/github/callback")
+    expect(current_path).to eq("/organizations")
 
-    expect(page).to have_content(data.fetch("info").fetch("nickname"))
+    expect(page).to have_content("Organizations")
   end
 
   scenario "with failure" do

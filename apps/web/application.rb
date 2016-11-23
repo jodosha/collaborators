@@ -78,6 +78,11 @@ module Web
 
       # Configure Rack middleware for this application
       #
+      middleware.use Warden::Manager do |manager|
+        manager.default_strategies :omniauth
+        manager.failure_app = ->(_env) { [401, {}, ["Authentication Failure"]] }
+      end
+
       middleware.use OmniAuth::Builder do
         provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
       end
@@ -253,8 +258,7 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/hanami-controller#Configuration
       controller.prepare do
-        # include MyAuthentication # included in all the actions
-        # before :authenticate!    # run an authentication before callback
+        include Web::Controllers::Authentication
       end
 
       # Configure the code that will yield each time Web::View is included

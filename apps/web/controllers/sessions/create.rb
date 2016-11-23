@@ -1,18 +1,19 @@
-module Web::Controllers::Sessions
-  class Create
-    include Web::Action
+module Web
+  module Controllers
+    module Sessions
+      class Create
+        include Web::Action
+        include Authentication::Skip
 
-    def call(params)
-      user = UserRepository.new.create(
-        uid:        params.env['omniauth.auth']['uid'],
-        email:      params.env['omniauth.auth']['info']['email'],
-        avatar_url: params.env['omniauth.auth']['info']['image'],
-        name:       params.env['omniauth.auth']['info']['name'],
-        nickname:   params.env['omniauth.auth']['info']['nickname'],
-        token:      params.env['omniauth.auth']['credentials']['token']
-      )
+        def call(params)
+          authentication = params.env['omniauth.auth']
 
-      self.body = user.nickname
+          user = UserRepository.new.find_or_create(authentication)
+
+          sign_in!(user)
+          redirect_to routes.organizations_url
+        end
+      end
     end
   end
 end
