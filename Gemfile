@@ -13,6 +13,8 @@ gem 'warden'
 
 gem 'octokit'
 
+gem 'hanami-bootstrap'
+
 group :development do
   gem 'shotgun'
   gem 'byebug'

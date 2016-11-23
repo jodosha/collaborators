@@ -2,9 +2,20 @@
 
 <div id="organizations">
   <% if organizations.any? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Active</th>
+        </tr>
+      </thead>
     <% organizations.each do |org| %>
-      <p><%= org.nickname %> <%= org.active %></p>
+      <tr>
+        <td><%= org.nickname %></td>
+        <td><%= org.active %></td>
+      </tr>
     <% end %>
+    </table>
   <% else %>
     No organizations found
   <% end %>
