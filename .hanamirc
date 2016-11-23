@@ -1,0 +1,4 @@
+project=collaborators
+architecture=container
+test=rspec
+template=erb
