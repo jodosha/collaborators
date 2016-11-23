@@ -11,8 +11,7 @@ class UserRepository < Hanami::Repository
       )
   end
 
-  private
-
+  # FIXME: this is here only for testing purposes
   def by_uid(uid)
     users.where(uid: uid).as(:entity).one
   end
