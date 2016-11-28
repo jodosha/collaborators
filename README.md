@@ -25,9 +25,14 @@ Please try to be collaborative each other. By helping other people, you can lear
 
 Please try to use "feature tests" to prove that your code works. There are examples in `spec/web/features`.
 
+---
+
 [@jodosha](https://github.com/jodosha) created a testing organization to play with. Ask him for the access.
 
 This testing organization, has also an OAuth2 application for authentication.
+Please check it here: https://github.com/organizations/hanami-workshop/settings/applications/443165 and copy the "Client Secret" in your [`.env.development`](https://github.com/jodosha/collaborators/blob/master/.env.development#L6)
+
+---
 
 ## Goals
 
