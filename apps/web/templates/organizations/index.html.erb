@@ -17,8 +17,10 @@
     <% end %>
     </table>
   <% else %>
-    No organizations found
+    <div class="alert alert-warning">
+      No organizations found
+    </div>
   <% end %>
 </div>
 
-<%= link_to("Sync with GitHub", routes.sync_organizations_path) %>
+<%= link_to("Sync with GitHub", routes.sync_organizations_path, class: "btn btn-info") %>
